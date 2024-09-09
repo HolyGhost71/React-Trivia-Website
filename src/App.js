@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Button, Typography } from "@mui/material";
+import { QuestionAnswer } from "@mui/icons-material";
+import { TriviaQuestion } from "./components/TriviaQuestion";
 
-function App() {
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+
+      <Typography variant="h2" align="center">
+        Quiz Game
+      </Typography>
+      <TriviaQuestion title="What is 2+2?"></TriviaQuestion>
+    </ThemeProvider>
   );
 }
-
-export default App;
