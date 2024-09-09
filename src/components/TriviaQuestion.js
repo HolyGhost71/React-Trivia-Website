@@ -2,16 +2,19 @@ import { Typography } from "@mui/material";
 import React from "react";
 import { AnswerButtonGrid } from "./AnswerButtonGrid";
 
-export const TriviaQuestion = ({ title, answers }) => {
+export const TriviaQuestion = ({ question, answers, correctAnswer }) => {
   return (
     <>
       <div className="questionTitle">
         <Typography variant="h4" align="center">
-          {title}
+          {question}
         </Typography>
       </div>
-      <div className>
-        <AnswerButtonGrid></AnswerButtonGrid>
+      <div className="answers">
+        <AnswerButtonGrid
+          answers={answers}
+          correctAnswer={correctAnswer}
+        ></AnswerButtonGrid>
       </div>
     </>
   );
