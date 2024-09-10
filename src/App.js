@@ -2,7 +2,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Typography } from "@mui/material";
 import { TriviaQuestion } from "./components/TriviaQuestion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const darkTheme = createTheme({
   palette: {
@@ -11,9 +12,55 @@ const darkTheme = createTheme({
 });
 
 export default function App() {
-  const [data, setData] = useState([]);
+  const [question, setQuestion] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  const [correctAnswer, setCorrectAnswer] = useState([]);
 
-  const triviaAnswers = ["London", "Tokyo", "Paris", "Washington DC"];
+  const setUpQuestion = async () => {
+    try {
+      const response = await axios.get(
+        "https://the-trivia-api.com/v2/questions"
+      );
+      var data = response.data[0];
+
+      var api_question = data["question"]["text"];
+      setQuestion(api_question);
+
+      var api_correct_answer = data["correctAnswer"];
+      setCorrectAnswer(api_correct_answer);
+
+      var all_answers = data["incorrectAnswers"];
+      all_answers.push(api_correct_answer);
+
+      function shuffle(array) {
+        let currentIndex = array.length;
+
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+          // Pick a remaining element...
+          let randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+
+          // And swap it with the current element.
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex],
+            array[currentIndex],
+          ];
+        }
+      }
+
+      shuffle(all_answers);
+      setAnswers(all_answers);
+
+      console.log(all_answers);
+    } catch (error) {
+      console.error("Error fetching data", error);
+    }
+  };
+
+  useEffect(() => {
+    setUpQuestion();
+  }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -23,9 +70,9 @@ export default function App() {
         Quiz Game
       </Typography>
       <TriviaQuestion
-        question="What is the capital of France?"
-        answers={triviaAnswers}
-        correctAnswer="Paris"
+        question={question}
+        answers={answers}
+        correctAnswer={correctAnswer}
       ></TriviaQuestion>
     </ThemeProvider>
   );
