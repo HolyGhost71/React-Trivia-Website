@@ -17,13 +17,11 @@ export const AnswerButtonGrid = ({
   };
 
   return (
-    <div align="center">
+    <div>
       {answers.map((answer) => (
         <div key={answer}>
           <Box padding={0.5}>
             <Button
-              variant="outlined"
-              size=""
               className={`answerButton ${
                 selectedAnswer && answer === correctAnswer
                   ? "correct"

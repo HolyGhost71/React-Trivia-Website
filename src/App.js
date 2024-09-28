@@ -45,7 +45,7 @@ export default function App() {
         let currentIndex = array.length;
 
         // While there remain elements to shuffle...
-        while (currentIndex != 0) {
+        while (currentIndex !== 0) {
           // Pick a remaining element...
           let randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex--;
@@ -77,27 +77,25 @@ export default function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <div align="center">
-        <Typography variant="h2">Quiz Game</Typography>
-        <Typography variant="h4">{question}</Typography>
-        <Box padding={3}>
-          <AnswerButtonGrid
-            answers={answers}
-            correctAnswer={correctAnswer}
-            setSelectedAnswer={setSelectedAnswer}
-            selectedAnswer={selectedAnswer}
-            updateScore={updateScore}
-          ></AnswerButtonGrid>
-        </Box>
+      <Typography variant="h2">Quiz Game</Typography>
+      <Typography variant="h4" className="questionTitle">
+        {question}
+      </Typography>
+      <Box>
+        <AnswerButtonGrid
+          answers={answers}
+          correctAnswer={correctAnswer}
+          setSelectedAnswer={setSelectedAnswer}
+          selectedAnswer={selectedAnswer}
+          updateScore={updateScore}
+        ></AnswerButtonGrid>
+      </Box>
 
-        <Button variant="contained" onClick={() => newQuestion()}>
-          New Question
-        </Button>
+      <Button className="newQuestionButton" onClick={() => newQuestion()}>
+        New Question
+      </Button>
 
-        <Typography paddingTop={5} variant="h5">
-          {"Points: " + points}
-        </Typography>
-      </div>
+      <Typography className="points">{"Points: " + points}</Typography>
     </ThemeProvider>
   );
 }
