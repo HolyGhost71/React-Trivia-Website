@@ -10,9 +10,11 @@ export const AnswerButtonGrid = ({
   updateScore,
 }) => {
   const handleClick = (answer) => {
-    setSelectedAnswer(answer);
-    if (answer === correctAnswer) {
-      updateScore();
+    if (selectedAnswer == null) {
+      setSelectedAnswer(answer);
+      if (answer === correctAnswer) {
+        updateScore();
+      }
     }
   };
 
