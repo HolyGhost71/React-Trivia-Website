@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  padding-top: 10px;
+}
+
+h4 {
+  padding: 20px;
+  width: 1000px;
+}
