@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
+import "./index.css";
 
 const darkTheme = createTheme({
   palette: {
@@ -77,12 +78,8 @@ export default function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div align="center">
-        <Typography variant="h2" align="center">
-          Quiz Game
-        </Typography>
-        <Typography variant="h4" align="center">
-          {question}
-        </Typography>
+        <Typography variant="h2">Quiz Game</Typography>
+        <Typography variant="h4">{question}</Typography>
         <Box padding={3}>
           <AnswerButtonGrid
             answers={answers}

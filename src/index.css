@@ -1,13 +1,83 @@
+/* General styling */
 body {
-  display: flex;
-  justify-content: center;
+  background-color: #2c2c2c;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-h2 {
-  padding-top: 10px;
+/* Title styling */
+.questionTitle {
+  font-size: 3em;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
+/* Question text styling */
 h4 {
-  padding: 20px;
-  width: 1000px;
+  font-size: 1.8em;
+  margin-bottom: 30px;
+}
+
+/* Answer buttons styling */
+.answerButton {
+  background-color: #ffffff;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.answerButton:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.answerButton.correct {
+  background-color: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+.answerButton.incorrect {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+/* Button for a new question */
+.newQuestionButton {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newQuestionButton:hover {
+  background-color: #0056b3;
+}
+
+/* Points display styling */
+.points {
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
+/* Layout tweaks */
+.answer-container {
+  display: inline-block;
+  width: 100%;
+  max-width: 600px;
 }

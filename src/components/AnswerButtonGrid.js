@@ -9,29 +9,6 @@ export const AnswerButtonGrid = ({
   selectedAnswer,
   updateScore,
 }) => {
-  const getButtonStyle = (answer) => {
-    if (selectedAnswer) {
-      if (answer === correctAnswer) {
-        return {
-          backgroundColor: "green",
-          color: "white",
-          borderColor: "green",
-        };
-      } else if (answer === selectedAnswer) {
-        return {
-          backgroundColor: "red",
-          color: "white",
-          borderColor: "red",
-        };
-      }
-    }
-    return {
-      backgroundColor: "white",
-      color: "black",
-      borderColor: "black",
-    };
-  };
-
   const handleClick = (answer) => {
     setSelectedAnswer(answer);
     if (answer === correctAnswer) {
@@ -47,7 +24,13 @@ export const AnswerButtonGrid = ({
             <Button
               variant="outlined"
               size=""
-              style={getButtonStyle(answer)}
+              className={`answerButton ${
+                selectedAnswer && answer === correctAnswer
+                  ? "correct"
+                  : selectedAnswer === answer
+                  ? "incorrect"
+                  : ""
+              }`}
               onClick={() => handleClick(answer)}
             >
               {answer}
