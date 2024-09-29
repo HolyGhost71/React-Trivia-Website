@@ -77,7 +77,9 @@ export default function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Typography variant="h2">Quiz Game</Typography>
+      <Typography variant="h2" className="title">
+        Quiz Game
+      </Typography>
       <Typography variant="h4" className="questionTitle">
         {question}
       </Typography>
