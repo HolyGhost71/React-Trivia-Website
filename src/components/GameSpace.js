@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
-import app from "../firebaseConfig";
 import { getDatabase, ref, get, set, push } from "firebase/database";
 import { useLocation } from "react-router-dom";
+import app from "../firebaseConfig";
 
 export const GameSpace = () => {
   const [question, setQuestion] = useState([]);
@@ -84,6 +84,12 @@ export const GameSpace = () => {
 
   const updateScore = async () => {
     setPoints(points + 1);
+    const db = getDatabase(app);
+    const userRef = ref(db, "users/" + name);
+    await set(userRef, {
+      userName: name,
+      userScore: points + 1,
+    });
   };
 
   return (
