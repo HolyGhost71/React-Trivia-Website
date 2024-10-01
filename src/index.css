@@ -18,19 +18,13 @@ body {
 
 /* Title styling */
 .questionTitle {
-  font-size: 3em;
+  font-size: 2.1em;
   margin-top: 20px;
   margin-bottom: 30px;
   color: #fff; /* Text color */
   text-align: center; /* Center text alignment */
 }
 
-
-/* Question text styling */
-h4 {
-  font-size: 1.8em;
-  margin-bottom: 30px;
-}
 
 /* Answer buttons styling */
 .answerButton {
@@ -96,4 +90,5 @@ h4 {
   border:none;
   outline:none;
   width:350px;
+  
 }
