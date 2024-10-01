@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
+import app from "../firebaseConfig";
+import { getDatabase, ref, get, set, push } from "firebase/database";
+import { useLocation } from "react-router-dom";
 
 export const GameSpace = () => {
   const [question, setQuestion] = useState([]);
@@ -13,9 +16,25 @@ export const GameSpace = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [points, setPoints] = useState(0);
 
+  const location = useLocation();
+  const { name } = location.state || { name: "Guest" };
+
   useEffect(() => {
+    getUserScore();
     setUpQuestion();
   }, []);
+
+  const getUserScore = async () => {
+    const db = getDatabase();
+    const scoreRef = ref(db, "users/" + name + "/userScore");
+    const snapshot = await get(scoreRef);
+    if (snapshot.exists()) {
+      setPoints(snapshot.val());
+    } else {
+      console.log("No score data found for user");
+      return 0;
+    }
+  };
 
   const setUpQuestion = async () => {
     try {
@@ -60,16 +79,17 @@ export const GameSpace = () => {
   const newQuestion = () => {
     setUpQuestion();
     setSelectedAnswer(null);
+    console.log(name);
   };
 
-  const updateScore = () => {
+  const updateScore = async () => {
     setPoints(points + 1);
   };
 
   return (
     <>
       <Typography variant="h2" className="title">
-        Quiz Game
+        Quickfire Trivia
       </Typography>
       <Typography variant="h4" className="questionTitle">
         {question}

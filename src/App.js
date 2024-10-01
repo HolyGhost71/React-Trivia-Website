@@ -2,6 +2,7 @@ import "./index.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { GameSpace } from "./components/GameSpace";
+import Write from "./components/Write";
 import NavBar from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -18,7 +19,8 @@ export default function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<GameSpace />} />
+          <Route exact path="/" element={<Write />} />
+          <Route exact path="/game" element={<GameSpace />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
