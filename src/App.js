@@ -1,10 +1,11 @@
 import "./index.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { GameSpace } from "./components/GameSpace";
-import Write from "./components/Write";
+import { GamePage } from "./components/GamePage";
+import LoginPage from "./components/LoginPage";
 import NavBar from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LeaderboardPage from "./components/LeaderboardPage";
 
 const darkTheme = createTheme({
   palette: {
@@ -19,8 +20,9 @@ export default function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Write />} />
-          <Route exact path="/game" element={<GameSpace />} />
+          <Route exact path="/" element={<LoginPage />} />
+          <Route exact path="/game" element={<GamePage />} />
+          <Route exact path="/leaderboard" element={<LeaderboardPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

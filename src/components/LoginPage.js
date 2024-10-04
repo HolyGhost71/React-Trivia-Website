@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import app from "../firebaseConfig";
 import { getDatabase, ref, set, get, push } from "firebase/database";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 function Write() {
   let [userName, setUserName] = useState("");
@@ -35,10 +36,14 @@ function Write() {
 
   return (
     <div>
+      <Typography variant="h2" className="title">
+        Quickfire Trivia
+      </Typography>
       <input
         type="text"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
+        size={50}
       />
       <br />
       <button className="answerButton" onClick={saveData}>

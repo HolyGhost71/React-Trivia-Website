@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const logo =
@@ -18,6 +18,9 @@ const NavBar = () => (
   >
     <Link to="/" style={{ display: "flex", alignItems: "center" }}>
       <img src={logo} alt="logo" height={45} />
+    </Link>
+    <Link to="/leaderboard" style={{ display: "flex", alignItems: "center" }}>
+      <Button>Leaderboard</Button>
     </Link>
   </Stack>
 );

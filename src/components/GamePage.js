@@ -9,7 +9,7 @@ import { getDatabase, ref, get, set, push } from "firebase/database";
 import { useLocation } from "react-router-dom";
 import app from "../firebaseConfig";
 
-export const GameSpace = () => {
+export const GamePage = () => {
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState([]);
